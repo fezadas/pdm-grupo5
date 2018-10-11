@@ -1,4 +1,4 @@
-package isel.adeetc.pdm.helloapplication
+/*package isel.adeetc.pdm.helloapplication
 
 import android.os.Bundle
 import android.os.Parcel
@@ -60,4 +60,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-}
+}*/
