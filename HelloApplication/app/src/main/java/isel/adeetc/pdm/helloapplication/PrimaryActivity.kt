@@ -6,15 +6,23 @@ import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.primary_activity.*
 
 class PrimaryActivity : AppCompatActivity() {
 
-    var text_key = null
+    //esquema ciclo de vida activity:
+    //https://developer.android.com/guide/components/activities/activity-lifecycle
+    val tag = "Lifecycle Test"
+
+    var text_key = ""
     var textViewModel = PrimaryActivity.TextViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // --> onStart
+        Log.d(tag, "onCreate")
+
         setContentView(R.layout.primary_activity)
 
         if(savedInstanceState != null)
@@ -30,6 +38,39 @@ class PrimaryActivity : AppCompatActivity() {
             }
             startActivityForResult(sendIntent,2)
         }
+    }
+    override fun onStart() {
+        super.onStart()
+        // --> onResume
+        Log.d(tag, "onStart")
+    }
+    override fun onResume(){
+        super.onResume()
+        // --> activity running -(another activity comes into the foreground)-> onPause
+        Log.d(tag, "onResume")
+    }
+    override fun onPause() {
+        super.onPause()
+        // --> onResume (user returns to the activity)
+        // --> onCreate (apps with higher priority need memory)
+        // --> onStop (the activity i no longer visible)
+        Log.d(tag, "onPause")
+    }
+    override fun onStop() {
+        super.onStop()
+        // --> onRestart (user navigates to the activity)
+        // --> onDestroy (the activity is finishing or being destroyed by the system)
+        Log.d(tag, "onStart")
+    }
+    override fun onRestart() {
+        super.onRestart()
+        // --> onStart
+        Log.d(tag, "onRestart")
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // (activity shutdown)
+        Log.d(tag, "onDestroy")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
