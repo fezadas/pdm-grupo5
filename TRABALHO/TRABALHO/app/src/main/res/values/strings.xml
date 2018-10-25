@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">YAMA-PDM</string>
+    <string name="ask_id">Your identifier</string>
+    <string name="ask_token">Token</string>
+    <string name="ask_org">Organization</string>
+    <string name="verify_button">Send</string>
+</resources>
